@@ -1,4 +1,4 @@
-h3 {
+h1 {
     width:100%;
     text-align: center;
     font-family: 'League Spartan', 'Arial';
@@ -6,14 +6,12 @@ h3 {
 
 table {
     table-layout: fixed;
-    width:100%;
-    max-height:600px;
-    overflow: hidden;
 }
 
 td {
     border:1px solid #000;
-    height:3.125vw;
+    height:30px;
+    width:30px;
     padding: 0px;
     margin:0px;
 }
@@ -30,8 +28,22 @@ td {
     cursor: pointer;
 }
 
+#toolbar {
+    position: absolute;
+}
+
 #toolbar .tool {
     float:left;
     height:40px;
     margin-right:10px;
+}
+
+#toolbar .tool .pickr, #toolbar .tool .pickr button {
+    width:40px;
+    height:100%;
+    border-radius:40px;
+}
+
+#matrix {
+    text-align: center;
 }

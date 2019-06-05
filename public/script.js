@@ -18,10 +18,16 @@ $(document).ready(function() {
     window.socket = io();
 
     const pickr = Pickr.create({
-        el: '.color-picker',
+        el: '#fill-picker',
         components: {preview: true, opacity: false, hue: true,
-            interaction: {clear: true, save: true}}
+            interaction: {save: true}}
     }).on('save', function(arg) {fill(arg.toRGBA())});
+    
+    const other = Pickr.create({
+        el: '#brush-picker',
+        components: {preview: true, opacity: false, hue: true,
+            interaction: {save: true}}
+    }).on('save', function(arg) {color = (arg.toRGBA())});
 
     createTable();
 });
@@ -42,7 +48,7 @@ function fillPixel(cell) {
 
 
 function createTable(){
-    var table = $('<table></table>').attr({ id: "matrixTable" });
+    var table = $('<table></table>').attr({ id: "matrixTable", align: "center" });
 
     table.on("mousedown mouseup mouseover", function(e) {
         e.preventDefault();
@@ -66,5 +72,5 @@ function createTable(){
             }).click(function(){fillPixel(this)}).appendTo(row); 
 		}		 
 	}
-	table.appendTo("body");
+	table.appendTo("#matrix");
 }

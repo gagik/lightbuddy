@@ -9,6 +9,16 @@ const HEIGHT = 16;
 
 var LedMatrix = require("easybotics-rpi-rgb-led-matrix");
 
+function fillData(color) {
+    matrixData = [...Array(HEIGHT)].map(x=>Array(WIDTH).fill(color));
+}
+
+function setPixelData(x, y, color) {
+    matrixData[x][y] = color;
+}
+
+fillData([0,0,0]);
+
 //init a 16 rows  by 16 cols led matrix 
 //default hardware mapping is 'regular', could be 'adafruit-hat-pwm' ect 
 var matrix = new LedMatrix(16, 32 );
@@ -31,9 +41,12 @@ io.on('connection', function (socket) {
         console.log("nice!" + color);
         matrix.fill(color[0], color[1], color[2]);
         changed = true;
+
+        fillData(color);
     });
     socket.on("canvas:pixel", function(pixel, color) {
         matrix.setPixel(pixel.x, pixel.y, color[0], color[1], color[2]);
+        setPixelData(x,y, color);
         changed = true;
     })
     socket.on("canvas:copy", function(imageData, length) {
@@ -41,7 +54,8 @@ io.on('connection', function (socket) {
 		for (var i = 0; i < length; i += 4) {
 			var y = Math.floor(i / 4 / WIDTH) 
             var x = i / 4 - y * WIDTH;
-            matrix.setPixel(x, y, data[i], data[i + 1], data[i + 2])
+            matrix.setPixel(x, y, data[i], data[i + 1], data[i + 2]);
+            setPixelData(x,y, [data[i], data[i + 1], data[i + 2]]);
         }
         changed = true;
     });
