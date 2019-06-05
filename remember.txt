@@ -1,0 +1,3 @@
+sshfs user@server.com:/remote/dir /home/user/testdir
+
+

@@ -1,0 +1,37 @@
+h3 {
+    width:100%;
+    text-align: center;
+    font-family: 'League Spartan', 'Arial';
+}
+
+table {
+    table-layout: fixed;
+    width:100%;
+    max-height:600px;
+    overflow: hidden;
+}
+
+td {
+    border:1px solid #000;
+    height:3.125vw;
+    padding: 0px;
+    margin:0px;
+}
+
+.btn-circle {
+    width:40px;
+    height:40px;
+    border-radius:100%;
+    background-color: black;
+    font-family: 'Material Icons';
+    line-height: 40px;
+    text-align:center;
+    color:white;
+    cursor: pointer;
+}
+
+#toolbar .tool {
+    float:left;
+    height:40px;
+    margin-right:10px;
+}

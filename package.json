@@ -1,0 +1,16 @@
+{
+  "name": "lightbuddy",
+  "version": "0.0.1",
+  "description": "LED coolness!",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "easybotics-rpi-rgb-led-matrix": "^0.3.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  }
+}
